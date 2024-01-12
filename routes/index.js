@@ -5,7 +5,7 @@ const userCallBackRouter = require('./usersCallback');
 
 router.use('/users', userRouter);
 router.use('/catalog', catalogRouter);
-router.use('/users-callback', userCallBackRouter);
+router.use('/userscallback', userCallBackRouter);
 
 router.use((req, res, next) => {
   const error = new Error('Service not found');
