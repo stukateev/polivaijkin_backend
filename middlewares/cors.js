@@ -4,7 +4,9 @@ const allowedCors = [
   "https://polivaijkin.shop",
   "http://polivaijkin.shop",
   "https://xn--80adrcegcwbj.xn--p1ai",
-  "http://xn--80adrcegcwbj.xn--p1ai"
+  "http://xn--80adrcegcwbj.xn--p1ai",
+  "62.84.118.250:443"
+
 ];
 
 module.exports = (req, res, next) => {
