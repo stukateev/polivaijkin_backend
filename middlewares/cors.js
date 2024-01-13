@@ -8,22 +8,28 @@ const allowedCors = [
   "https://xn--80adrcegcwbj.xn--p1ai",
   "http://xn--80adrcegcwbj.xn--p1ai"
 ];
+
 module.exports = (req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
-  // const requestHeaders = req.headers['access-control-request-headers'];
+  const requestHeaders = req.headers['access-control-request-headers'];
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  res.header('Access-Control-Allow-Credentials', true);
-
   if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
+    res.set({
+      'Access-Control-Allow-Origin': origin,
+      'Access-Control-Allow-Credentials': true,
+    });
   }
   if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-
-    return res.end();
+    res.set({
+      'Access-Control-Allow-Methods': DEFAULT_ALLOWED_METHODS,
+      'Access-Control-Allow-Headers': requestHeaders,
+    });
+    res.end();
+    return;
   }
 
-  return next();
+  next();
 };
+
+
