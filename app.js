@@ -19,11 +19,6 @@ const { createUser, login, clearCookie } = require('./controllers/users');
 const corsOptions = {
   origin: '*',
 
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  // credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
