@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const routes = require('./routes');
-
+const cors = require('cors');
 
 const { PORT = 3000, DB_PATH = 'mongodb://127.0.0.1:27017/polivaijkin' } = process.env;
 const app = express();
@@ -16,27 +16,19 @@ const { errorLogger, requestLogger } = require('./middlewares/loggerHandler');
 const { createUser, login, clearCookie } = require('./controllers/users');
 
 
-const cors = require('cors');
-const allowedOrigins = [
-  'localhost:3000',
-  'http://localhost:3000',
-  "https://polivaijkin.shop",
-  "http://polivaijkin.shop",
-  "https://xn--80adrcegcwbj.xn--p1ai",
-  "http://xn--80adrcegcwbj.xn--p1ai"
-]
-
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
+  origin: [
+    'https://mesto.zlnva.nomoredomains.monster',
+    'http://mesto.zlnva.nomoredomains.monster',
+    'https://localhost:3000',
+    'http://localhost:3000',
+    'https://localhost:3001',
+    'http://localhost:3001',
+  ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  // credentials: true,
+  preflightContinue: false,
   optionsSuccessStatus: 204,
 };
 
