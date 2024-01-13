@@ -1,11 +1,12 @@
 const allowedCors = [
-  'localhost:3000',
   'http://localhost:3000',
-  "https://polivaijkin.shop",
-  "http://polivaijkin.shop",
-  "https://xn--80adrcegcwbj.xn--p1ai",
-  "http://xn--80adrcegcwbj.xn--p1ai",
-  "62.84.118.250:443"
+  'https://localhost:3000',
+  'https://polivaijkin.shop',
+  'http://polivaijkin.shop',
+  'https://xn--80adrcegcwbj.xn--p1ai',
+  'http://xn--80adrcegcwbj.xn--p1ai',
+  'http://62.84.118.250:443',
+  'https://62.84.118.250:443'
 
 ];
 
