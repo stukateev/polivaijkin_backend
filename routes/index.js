@@ -3,9 +3,9 @@ const userRouter = require('./users');
 const catalogRouter = require('./catalog');
 const userCallBackRouter = require('./usersCallBack');
 
-router.use('/users', userRouter);
-router.use('/catalog', catalogRouter);
-router.use('/userscallback', userCallBackRouter);
+router.use('/api/users', userRouter);
+router.use('/api/catalog', catalogRouter);
+router.use('/api/userscallback', userCallBackRouter);
 
 router.use((req, res, next) => {
   console.log(req)
