@@ -7,7 +7,7 @@ const { errors } = require('celebrate');
 const routes = require('./routes');
 const cors = require('./middlewares/cors');
 
-const { PORT = 5000, DB_PATH = 'mongodb://127.0.0.1:27017/polivaijkin' } = process.env;
+const { PORT = 3000, DB_PATH = 'mongodb://127.0.0.1:27017/polivaijkin' } = process.env;
 const app = express();
 
 const auth = require('./middlewares/auth');
