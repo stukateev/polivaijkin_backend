@@ -18,12 +18,14 @@ const { createUser, login, clearCookie } = require('./controllers/users');
 
 const corsOptions = {
   origin: [
-    'https://mesto.zlnva.nomoredomains.monster',
-    'http://mesto.zlnva.nomoredomains.monster',
     'https://localhost:3000',
     'http://localhost:3000',
     'https://localhost:3001',
     'http://localhost:3001',
+    "https://polivaijkin.shop",
+    "http://polivaijkin.shop",
+    "https://xn--80adrcegcwbj.xn--p1ai",
+    "http://xn--80adrcegcwbj.xn--p1ai"
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization'],
