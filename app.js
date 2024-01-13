@@ -15,7 +15,7 @@ const errorsHandler = require('./middlewares/handleError');
 const { errorLogger, requestLogger } = require('./middlewares/loggerHandler');
 const { createUser, login, clearCookie } = require('./controllers/users');
 
-app.use(cors);
+
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,3 +1,7 @@
+const cors = require('cors');
+const express = require('express');
+const app = express();
+
 const allowedCors = [
   'http://localhost:3000',
   'https://localhost:3000',
@@ -10,25 +14,18 @@ const allowedCors = [
 
 ];
 
-module.exports = (req, res, next) => {
-  const { origin } = req.headers;
-  const { method } = req;
-  const requestHeaders = req.headers['access-control-request-headers'];
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  if (allowedCors.includes(origin)) {
-    res.set({
-      'Access-Control-Allow-Origin': origin,
-      'Access-Control-Allow-Credentials': true,
-    });
-  }
-  if (method === 'OPTIONS') {
-    res.set({
-      'Access-Control-Allow-Methods': DEFAULT_ALLOWED_METHODS,
-      'Access-Control-Allow-Headers': requestHeaders,
-    });
-    res.end();
-    return;
-  }
-
-  next();
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept',
+  optionsSuccessStatus: 204,
 };
+
+app.use(cors(corsOptions));
