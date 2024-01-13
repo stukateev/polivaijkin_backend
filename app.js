@@ -17,16 +17,8 @@ const { createUser, login, clearCookie } = require('./controllers/users');
 
 
 const corsOptions = {
-  origin: [
-    'https://localhost:3000',
-    'http://localhost:3000',
-    'https://localhost:3001',
-    'http://localhost:3001',
-    "https://polivaijkin.shop",
-    "http://polivaijkin.shop",
-    "https://xn--80adrcegcwbj.xn--p1ai",
-    "http://xn--80adrcegcwbj.xn--p1ai"
-  ],
+  origin: '*',
+
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization'],
   // credentials: true,
