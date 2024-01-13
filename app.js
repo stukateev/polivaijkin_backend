@@ -9,14 +9,14 @@ const cors = require('./middlewares/cors');
 
 const { PORT = 3000, DB_PATH = 'mongodb://127.0.0.1:27017/polivaijkin' } = process.env;
 const app = express();
-
-const auth = require('./middlewares/auth');
+const cors = require("cors")
+// const auth = require('./middlewares/auth');
 const errorsHandler = require('./middlewares/handleError');
 const { errorLogger, requestLogger } = require('./middlewares/loggerHandler');
 const { createUser, login, clearCookie } = require('./controllers/users');
 
 
-app.use(cors);
+app.use(cors({origin:["*"]}));
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
