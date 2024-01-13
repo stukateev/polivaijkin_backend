@@ -17,7 +17,7 @@ const { createUser, login, clearCookie } = require('./controllers/users');
 
 
 const corsOptions = {
-  origin: '*',
+  origin: ['*'],
 
 };
 
