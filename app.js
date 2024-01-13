@@ -5,18 +5,18 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const routes = require('./routes');
-// const cors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 const { PORT = 5000, DB_PATH = 'mongodb://127.0.0.1:27017/polivaijkin' } = process.env;
 const app = express();
-const cors = require("cors")
-// const auth = require('./middlewares/auth');
+
+const auth = require('./middlewares/auth');
 const errorsHandler = require('./middlewares/handleError');
 const { errorLogger, requestLogger } = require('./middlewares/loggerHandler');
 const { createUser, login, clearCookie } = require('./controllers/users');
 
 
-app.use(cors({origin:["*"]}));
+app.use(cors);
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
