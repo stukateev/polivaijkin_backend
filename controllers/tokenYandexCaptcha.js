@@ -25,7 +25,10 @@ const checkYandexCaptcha = (req, res, next) => {
                     return;
                 }
                 callback(JSON.parse(content).status === 'ok');
+
             });
+
+
         });
         reqsed.on('error', (error) => {
             console.error(error);
@@ -38,8 +41,14 @@ const checkYandexCaptcha = (req, res, next) => {
 
 
     check_captcha( (passed) => {
-        res.send(passed)
+        if (passed) {
+            res.send(true)
+        } else {
+            res.send(false)
+        }
     });
+
+
 };
 
 
