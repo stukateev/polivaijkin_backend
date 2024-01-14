@@ -10,7 +10,7 @@ const createProduct = (req, res, next) => {
     controllerOutdoor, controllerValve, controllerAutonomous, image, instructionLink,
     productId
   } = req.body;
-  console.log(req.body)
+
   return Product.create({
     article, title, price, sale, availability, description, manufactured, diameter1,
     diameter2, diameter3, carving1, carving2, carving3, carvingInt1, carvingInt2,
@@ -47,7 +47,6 @@ const deleteProduct = (req, res, next) => {
 
 module.exports = {
   getProduct,
-
   createProduct,
   deleteProduct,
 };
