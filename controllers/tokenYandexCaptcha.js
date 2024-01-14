@@ -3,8 +3,8 @@ const https = require('https'),
     querystring = require('querystring');
 const SMARTCAPTCHA_SERVER_KEY = 'ysc2_zmzFmGxXalFacinQESzE6ZD90tCbzLlmCNI7QIzXee8bebbb'
 const checkYandexCaptcha = (req, res, next) => {
-    const token = req.token;
-    const userIP = req.userIP;
+    const token = req.body.token;
+    const userIP = req.body.userIP;
 
     function check_captcha( callback) {
         const options = {
@@ -32,21 +32,14 @@ const checkYandexCaptcha = (req, res, next) => {
             callback(true);
         });
         reqsed.end();
+
     }
 
 
 
     check_captcha( (passed) => {
-        if (passed) {
-            res.send(true)
-            console.log(res);
-        } else {
-            res.send(false)
-            console.log(res);
-        }
+        res.send(passed)
     });
-
-
 };
 
 
