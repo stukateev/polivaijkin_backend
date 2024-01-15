@@ -2,10 +2,10 @@ const UsersCallBack = require('../models/usersCallBack');
 const { handleError, FORBIDDEN } = require('../utils/errors');
 const validator = require("validator");
 const TelegramBot = require('node-telegram-bot-api');
+const { API_KEY_BOT, CHAT_ID } = process.env;
 
 
-const API_KEY_BOT = '6849393490:AAGwXPm71Y0kuMgiXaYgoRSl-PFGL9tssPQ';
-const chatID = "-1002033389063"
+
 const bot = new TelegramBot(API_KEY_BOT, {
 
     polling: {
@@ -14,7 +14,7 @@ const bot = new TelegramBot(API_KEY_BOT, {
     }
 });
 async function sendMessageInTelegram(name, number) {
-    await bot.sendMessage(chatID, `<b>Пришла заявка.</b> Имя: <u>${name}</u> Телефон: <u>${number}</u> `);
+    await bot.sendMessage(CHAT_ID, `<b>Пришла заявка.</b> Имя: <u>${name}</u> Телефон: <u>${number}</u> `);
 }
 
 const createCallBack = (req, res, next) => {

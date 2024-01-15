@@ -1,7 +1,8 @@
 
 const https = require('https'),
     querystring = require('querystring');
-const SMARTCAPTCHA_SERVER_KEY = 'ysc2_zmzFmGxXalFacinQESzE6ZD90tCbzLlmCNI7QIzXee8bebbb'
+const { SMARTCAPTCHA_SERVER_KEY } = process.env;
+
 const checkYandexCaptcha = (req, res, next) => {
     const token = req.body.token;
     const userIP = req.body.userIP;
