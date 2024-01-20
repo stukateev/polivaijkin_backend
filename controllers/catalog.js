@@ -4,7 +4,7 @@ const validator = require("validator");
 
 const createProduct = (req, res, next) => {
   const {
-    article, title, price, sale, availability, description, manufactured, diameter1,
+    Article, Title, price, sale, availability, description, manufactured, diameter1,
     diameter2, diameter3, carving1, carving2, carving3, carvingInt1, carvingInt2,
     carvingInt3, carvingSprinkler, typeSprinkler, typeNozzle, radius, controllerWifi,
     controllerOutdoor, controllerValve, controllerAutonomous, image, instructionLink,

@@ -3,84 +3,106 @@ const validator = require('validator');
 
 const productSchema = new mongoose.Schema(
   {
-        article: {
+        Article: {
+          type: String,
+
+        },
+        Title: {
           type: String,
           required: true,
         },
-        title: {
-          type: String,
-          required: true,
-        },
-        price: {
+        Price: {
           type: Number,
           required: true,
         },
-        sale: {
+        PriceUSD: {
           type: Number,
         },
-        availability: {
+        Sale: {
+          type: Number,
+        },
+        StockOpt: {
           type: Boolean,
           required: true,
         },
-        description: {
+        StockKrd1: {
+          type: Boolean,
+          required: true,
+        },
+        StockKrd2: {
+          type: Boolean,
+          required: true,
+        },
+        CategoryTranslit: {
           type: String,
         },
-          manufactured:{
+        Category: {
           type: String,
         },
-        diameter1: {
+        MainCategory: {
           type: String,
         },
-        diameter2: {
+        MainCategoryTranslit: {
           type: String,
         },
-        diameter3: {
+        Description: {
           type: String,
         },
-        carving1: {
+        Manufactured:{
+          type: String,
+        },
+        Diameter1: {
+          type: String,
+        },
+        Diameter2: {
+          type: String,
+        },
+        Diameter3: {
+          type: String,
+        },
+        Carving1: {
           type: String,
           },
-        carving2: {
+        Carving2: {
           type: String,
         },
-        carving3: {
+        Carving3: {
           type: String,
         },
-        carvingInt1: {
+        CarvingInt1: {
           type: String,
         },
-        carvingInt2: {
+        CarvingInt2: {
           type: String,
         },
-        carvingInt3: {
+        CarvingInt3: {
           type: String,
         },
-        carvingSprinkler: {
+        CarvingSprinkler: {
           type: String,
         },
-        typeSprinkler: {
+        TypeSprinkler: {
           type: String,
         },
-        typeNozzle: {
+        TypeNozzle: {
           type: String,
         },
-        radius: {
+        Radius: {
           type: String,
         },
-        controllerWifi: {
+        ControllerWifi: {
           type: Boolean,
         },
-        controllerOutdoor: {
+        ControllerOutdoor: {
           type: Boolean,
         },
-        controllerValve: {
+        ControllerValve: {
           type: Number,
         },
-        controllerAutonomous: {
+        ControllerAutonomous: {
           type: Boolean,
         },
-
-        image: {
+        ImageLink: {
           type: String,
           validate: [
             {
@@ -89,7 +111,10 @@ const productSchema = new mongoose.Schema(
             },
           ],
         },
-        instructionLink: {
+        ImageAlt: {
+          type: String,
+      },
+        InstructionLink: {
           type: String,
           validate: [
             {
