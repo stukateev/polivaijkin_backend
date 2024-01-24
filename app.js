@@ -17,7 +17,7 @@ const { createUser, login, clearCookie } = require('./controllers/users');
 
 
 app.use(cors);
-
+app.use(require('prerender-node').set('prerenderToken', 'P7SP2BGf8QTFPtfeTB5N'));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
