@@ -23,11 +23,27 @@ const createProduct = (req, res, next) => {
 };
 
 const getProduct = (req, res, next) => {
-  const owner = req.user._id;
-  Product.find({ owner })
-    .then((product) => res.send(product))
-    .catch((err) => handleError(err, next));
+  const{skipNumber, lengthLimit, filterDict } = req.body;
+  Product.find(filterDict).skip(skipNumber).limit(lengthLimit)
+      .then((product) => res.status(201).send(product))
+      .catch((err) => handleError(err, next));
 };
+const getCategory = (req, res, next) => {
+  Product.find()
+      .distinct('Category' )
+      .then((category) => res.send(category))
+      .catch((err) => handleError(err, next));
+};
+
+const getItemsInSpecificCategory = async () => {
+  try {
+    const distinctItems = await Product.distinct('name', );
+    console.log(distinctItems);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
 const deleteProduct = (req, res, next) => {
   const { movieId } = req.params;
@@ -47,6 +63,6 @@ const deleteProduct = (req, res, next) => {
 
 module.exports = {
   getProduct,
-  createProduct,
+  getCategory,
   deleteProduct,
 };

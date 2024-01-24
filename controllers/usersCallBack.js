@@ -8,10 +8,7 @@ const { API_KEY_BOT, CHAT_ID } = process.env;
 
 const bot = new TelegramBot(API_KEY_BOT, {
 
-    polling: {
-        interval: 3000,
-        autoStart: true
-    }
+
 });
 async function sendMessageInTelegram(name, number) {
     await bot.sendMessage(CHAT_ID, `<b>Пришла заявка.</b> Имя: <u>${name}</u> Телефон: <u>${number}</u> `);

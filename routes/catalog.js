@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const {
   getProduct,
-  createProduct,
+  getCategory,
+
   deleteProduct,
 } = require('../controllers/catalog');
 
-router.get('/', getProduct);
-router.post('/', createProduct);
+router.post('/', getProduct);
+router.get('/category', getCategory)
 router.delete('/:movieId', deleteProduct);
 
 module.exports = router;
