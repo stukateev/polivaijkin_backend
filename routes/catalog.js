@@ -6,7 +6,7 @@ const {
   deleteProduct,
 } = require('../controllers/catalog');
 
-router.post('/', getProduct);
+router.get('/', getProduct);
 router.get('/category', getCategory)
 router.delete('/:movieId', deleteProduct);
 
