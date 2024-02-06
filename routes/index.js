@@ -6,7 +6,7 @@ const tokenYandexCaptchaRouter = require('./tokenYandexCaptcha');
 
 
 router.use('/api/users', userRouter);
-router.use('/api/catalog', catalogRouter);
+router.use('/api/catalogs', catalogRouter);
 router.use('/api/userscallback', userCallBackRouter);
 router.use('/api/tokenYandexCaptcha', tokenYandexCaptchaRouter);
 router.use((req, res, next) => {
