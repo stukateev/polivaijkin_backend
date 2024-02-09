@@ -63,9 +63,94 @@ const deleteProduct = (req, res, next) => {
     })
     .catch((err) => handleError(err, next));
 };
+const getFilter = (req, res, next) => {
+  const { filterDict } = req.query;
+  const filter = JSON.parse(filterDict);
+
+  Product.find(filter,
+      'Price',
+      'Manufactured',
+      'Diameter1',
+      'Diameter2',
+      'Diameter3',
+      'Carving1',
+      'Carving2',
+      'Carving3',
+      'CarvingInt1',
+      'CarvingInt2',
+      'CarvingInt3',
+      'CarvingSprinkler',
+      'TypeSprinkler',
+      'TypeNozzle',
+      'Radius',
+      'ControllerWifi',
+      'ControllerOutdoor',
+      'ControllerValve',
+      'ControllerAutonomous')
+      .then((product) => res.status(200).send(product))
+      .catch((err) => handleError(err, next));
+};
+
+
+const getPreFilterCount = (req, res, next) => {
+  const { filterDict } = req.query;
+  const filter = JSON.parse(filterDict);
+  Product.find(filter).count()
+      .then((count) => res.status(200).json({ count }))
+      .catch((err) => handleError(err, next));
+};
+
+const getMaxPriceFilter = (req, res, next) => {
+  const { filterDict } = req.query;
+  const filter = JSON.parse(filterDict);
+  Product.aggregate([
+    { $match: filter },
+    {
+      $group: {
+        _id: null,
+        maxPrice: { $max: "$Price" }
+      }
+    }
+  ])
+      .then(result => {
+        if (result.length > 0) {
+          res.status(200).json({ maxPrice: result[0].maxPrice });
+        } else {
+          res.status(404).json({ message: "No products found" });
+        }
+      })
+      .catch(err => handleError(err, next));
+};
+
+const getMinPriceFilter = (req, res, next) => {
+  const { filterDict } = req.query;
+  const filter = JSON.parse(filterDict);
+
+  Product.aggregate([
+    { $match: filter },
+    {
+      $group: {
+        _id: null,
+        minPrice: { $min: "$Price" }
+      }
+    }
+  ])
+      .then(result => {
+        if (result.length > 0) {
+          res.status(200).json({ minPrice: result[0].minPrice });
+        } else {
+          res.status(404).json({ message: "No products found" });
+        }
+      })
+      .catch(err => handleError(err, next));
+};
 
 module.exports = {
   getProduct,
+  getFilter,
   getCategory,
+  getMinPriceFilter,
+  getMaxPriceFilter,
+  getPreFilterCount,
   deleteProduct,
 };
