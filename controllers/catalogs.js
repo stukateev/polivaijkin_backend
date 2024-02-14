@@ -1,4 +1,4 @@
-const Product = require('../models/catalog');
+const Product = require('../models/catalogs');
 const { handleError, FORBIDDEN } = require('../utils/errors');
 const validator = require("validator");
 

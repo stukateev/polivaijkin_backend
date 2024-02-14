@@ -7,7 +7,7 @@ const {
   getMinPriceFilter,
   getPreFilterCount,
   getMaxPriceFilter
-} = require('../controllers/catalog');
+} = require('../controllers/catalogs');
 
 router.get('/', getProduct);
 router.get('/category', getCategory)

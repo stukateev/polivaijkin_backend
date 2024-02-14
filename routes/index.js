@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const userRouter = require('./users');
-const catalogRouter = require('./catalog');
+const catalogRouter = require('./catalogs');
 const userCallBackRouter = require('./usersCallBack');
 const tokenYandexCaptchaRouter = require('./tokenYandexCaptcha');
 
