@@ -15,6 +15,17 @@ const errorsHandler = require('./middlewares/handleError');
 const { errorLogger, requestLogger } = require('./middlewares/loggerHandler');
 const { createUser, login, clearCookie } = require('./controllers/users');
 
+app.get('/sitemap.xml', (req, res) => {
+  const sitemapPath = path.join(__dirname, 'path', 'to', 'sitemap.xml');
+  fs.readFile(sitemapPath, (err, data) => {
+    if (err) {
+      console.error('Error reading sitemap.xml:', err);
+      return res.status(500).send('Internal Server Error');
+    }
+    res.header('Content-Type', 'application/xml');
+    res.send(data);
+  });
+});
 
 app.use(cors);
 
