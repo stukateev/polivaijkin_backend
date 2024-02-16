@@ -17,17 +17,8 @@ const { createUser, login, clearCookie } = require('./controllers/users');
 const path = require("path");
 const fs = require("fs");
 
-app.get('/sitemap.xml', (req, res) => {
-  const sitemapPath = path.join(__dirname, 'path', 'to', 'sitemap.xml');
-  fs.readFile(sitemapPath, (err, data) => {
-    if (err) {
-      console.error('Error reading sitemap.xml:', err);
-      return res.status(500).send('Internal Server Error');
-    }
-    res.header('Content-Type', 'application/xml');
-    res.send(data);
-  });
-});
+
+
 
 app.use(cors);
 
@@ -47,7 +38,7 @@ app.use(cookieParser());
 app.post('/signin', login);
 app.post('/signup', createUser);
 app.post('/signout', clearCookie);
-
+app.use('/sitemap.xml', express.static(path.join(__dirname, 'path', 'to', 'sitemap.xml')));
 app.use(routes);
 app.use(errors());
 app.use(errorLogger);
