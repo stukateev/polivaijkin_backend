@@ -14,6 +14,8 @@ const auth = require('./middlewares/auth');
 const errorsHandler = require('./middlewares/handleError');
 const { errorLogger, requestLogger } = require('./middlewares/loggerHandler');
 const { createUser, login, clearCookie } = require('./controllers/users');
+const path = require("path");
+const fs = require("fs");
 
 app.get('/sitemap.xml', (req, res) => {
   const sitemapPath = path.join(__dirname, 'path', 'to', 'sitemap.xml');
