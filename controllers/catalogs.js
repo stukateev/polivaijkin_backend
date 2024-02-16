@@ -23,11 +23,12 @@ const createProduct = (req, res, next) => {
 };
 
 const getProduct = (req, res, next) => {
-  const { skipNumber, lengthLimit, filterDict } = req.query;
+  const { skipNumber, lengthLimit, filterDict, selectedFields} = req.query;
+  const selected = JSON.parse(selectedFields);
   const filter = JSON.parse(filterDict);
   const skip = parseInt(skipNumber, 10) || 0;
   const limit = parseInt(lengthLimit, 10) || 10;
-  Product.find(filter).skip(skip).limit(limit)
+  Product.find(filter, selected).skip(skip).limit(limit)
       .then((product) => res.status(200).send(product))
       .catch((err) => handleError(err, next));
 };
