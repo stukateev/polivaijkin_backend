@@ -7,14 +7,14 @@ async function generateSitemap() {
     try {
         const products = await Product.find({}, { _id: 1 }); // Получаем только _id каждого продукта
         const pages = [
-            { url: '/', changefreq: 'daily', priority: 1.0 },
-            { url: '/market', changefreq: 'weekly', priority: 0.8 },
-            { url: '/uslugi/landscape-light', changefreq: 'weekly', priority: 0.8 },
-            { url: '/uslugi/landscape-design', changefreq: 'weekly', priority: 0.8 },
-            { url: '/uslugi/irrigation', changefreq: 'weekly', priority: 0.8 },
-            { url: '/uslugi/bath', changefreq: 'weekly', priority: 0.8 },
+            { url: 'https://polivaijkin.shop/', changefreq: 'daily', priority: 1.0 },
+            { url: 'https://polivaijkin.shop/market', changefreq: 'weekly', priority: 0.8 },
+            { url: 'https://polivaijkin.shop/uslugi/landscape-light', changefreq: 'weekly', priority: 0.8 },
+            { url: 'https://polivaijkin.shop/uslugi/landscape-design', changefreq: 'weekly', priority: 0.8 },
+            { url: 'https://polivaijkin.shop/uslugi/irrigation', changefreq: 'weekly', priority: 0.8 },
+            { url: 'https://polivaijkin.shop/uslugi/bath', changefreq: 'weekly', priority: 0.8 },
             ...products.map(product => ({
-                url: `/market/product-card/${product._id}`,
+                url: `https://polivaijkin.shop/market/product-card/${product._id}`,
                 changefreq: 'daily',
                 priority: 0.8
             }))
