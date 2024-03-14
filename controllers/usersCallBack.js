@@ -27,7 +27,7 @@ const createCallBack = (req, res, next) => {
     })
         .then((people) => {
             res.status(201).send(people)
-            sendMessageInTelegram(name, number)
+            sendMessageInTelegram(name, number, type, description)
         })
         .catch((err) => handleError(err, next));
 };
