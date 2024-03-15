@@ -11,9 +11,13 @@ const bot = new TelegramBot(API_KEY_BOT, {
 
 });
 async function sendMessageInTelegram(name, number, type, description) {
-    await bot.sendMessage(CHAT_ID, `Пришла заявка. Имя: ${name} 
+    await bot.sendMessage(CHAT_ID, `Пришла заявка. 
+    Имя: ${name} 
+    
     Телефон: ${number} 
+    
     ${type} 
+    
     ${description}`);
 }
 
